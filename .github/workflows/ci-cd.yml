@@ -1,35 +1,73 @@
-# This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI-CD
 
-# Controls when the workflow will run
+# Eventos que van a disparar el workflow
 on:
-  # Triggers the workflow on push or pull request events but only for the "main" branch
+  # Evento que se dispara cuando se hace un push al repositorio, en la rama main
   push:
     branches: [ "main" ]
+  # Evento que se dispara cuando se hace un pull request al repositorio, en la rama main
   pull_request:
     branches: [ "main" ]
 
-  # Allows you to run this workflow manually from the Actions tab
+
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+# Jobs que se van a ejecutar
 jobs:
-  # This workflow contains a single job called "build"
+
+  # Job que se va a ejecutar en este caso se llama build
   build:
-    # The type of runner that the job will run on
+    # Es el runner que se va a utilizar
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    # Pasos que se van a ejecutar
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Se clona el repositorio, esto se convierte en un paso y a su ves es un action
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
+      # Se ejecuta un script
       - name: Run a one-line script
         run: echo Hello, world!
 
-      # Runs a set of commands using the runners shell
+      # Se ejecuta un script de varias lineas, para ello el operador |
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  # Job que se va a ejecutar en este caso se llama test
+  test:
+    # Es el runner que se va a utilizar
+    runs-on: ubuntu-latest
+
+    # Pasos que se van a ejecutar
+    steps:
+      # Se clona el repositorio, esto se convierte en un paso y a su ves es un action
+      - uses: actions/checkout@v3
+
+      # Se ejecuta un script
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Se ejecuta un script de varias lineas, para ello el operador |
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+  deploy:
+    # Es el runner que se va a utilizar
+    runs-on: ubuntu-latest
+
+    # Pasos que se van a ejecutar
+    steps:
+      # Se clona el repositorio, esto se convierte en un paso y a su ves es un action
+      - uses: actions/checkout@v3
+
+      # Se ejecuta un script
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # Se ejecuta un script de varias lineas, para ello el operador |
       - name: Run a multi-line script
         run: |
           echo Add other actions to build,
