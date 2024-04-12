@@ -18,6 +18,9 @@ jobs:
 
   # Job que se va a ejecutar en este caso se llama build
   build:
+    env:
+      NAME: "Jhon Doe"
+      EVENT_NAME: ${{ github.event_name }}
     # Es el runner que se va a utilizar
     runs-on: ubuntu-latest
 
@@ -35,40 +38,7 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
-  # Job que se va a ejecutar en este caso se llama test
-  test:
-    # Es el runner que se va a utilizar
-    runs-on: ubuntu-latest
-
-    # Pasos que se van a ejecutar
-    steps:
-      # Se clona el repositorio, esto se convierte en un paso y a su ves es un action
-      - uses: actions/checkout@v3
-
-      # Se ejecuta un script
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Se ejecuta un script de varias lineas, para ello el operador |
-      - name: Run a multi-line script
+      - name: get data
         run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-  deploy:
-    # Es el runner que se va a utilizar
-    runs-on: ubuntu-latest
-
-    # Pasos que se van a ejecutar
-    steps:
-      # Se clona el repositorio, esto se convierte en un paso y a su ves es un action
-      - uses: actions/checkout@v3
-
-      # Se ejecuta un script
-      - name: Run a one-line script
-        run: echo Hello, world!
-
-      # Se ejecuta un script de varias lineas, para ello el operador |
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
+          echo "Hello $NAME"
+          echo "Event name: $EVENT_NAME"
