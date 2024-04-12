@@ -1,21 +1,18 @@
-
 name: CI-CD
 
 # Eventos que van a disparar el workflow
 on:
   # Evento que se dispara cuando se hace un push al repositorio, en la rama main
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   # Evento que se dispara cuando se hace un pull request al repositorio, en la rama main
   pull_request:
-    branches: [ "main" ]
-
+    branches: ["main"]
 
   workflow_dispatch:
 
 # Jobs que se van a ejecutar
 jobs:
-
   # Job que se va a ejecutar en este caso se llama build
   build:
     env:
@@ -42,3 +39,11 @@ jobs:
         run: |
           echo "Hello $NAME"
           echo "Event name: $EVENT_NAME"
+  hola-mundo: #Nombre del job
+    runs-on: ubuntu-latest #Maquina en la que correrá
+    steps: #Lista de steps del job hola-mundo
+      - name: Public IP #Nombre del step
+        id: ip #identificador usable dentro del job para otros steps
+        uses: haythem/public-ip@v1.3 #Usará el action haythem/public-ip
+      - name: Hola mundo #Segundo step de nombre Hola mundo
+        run: echo ¡Hola Mundo desde ${{ steps.ip.outputs.ipv4 }}! #bash
