@@ -2,7 +2,7 @@
 
 
 
-| **Contable (Countable)** | **Traducción al español** | **Incontable (Uncountable)** | **Traducción al español** |
+| **Contable** | **Traducción** | **Incontable** | **Traducción** |
 |--------------------------|---------------------------|------------------------------|---------------------------|
 | Bun                      | Panecillo                  | Bread                        | Pan                       |
 | Sandwich                 | Sándwich                   | Fruit                        | Fruta                     |
